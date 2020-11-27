@@ -1,0 +1,12 @@
+.navbar {
+  align-items: flex-start;
+  width: 100%;
+  height: 100vh;
+}
+
+.navbar-nav {
+  align-items: flex-start;
+}
+#searchBar {
+  width: 90%;
+}
