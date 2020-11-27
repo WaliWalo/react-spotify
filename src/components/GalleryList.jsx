@@ -8,7 +8,7 @@ export default class GalleryList extends Component {
         <Container className="ml-5">
           <h1>{this.props.title}</h1>
           <Row>
-            {this.props.albums.data.slice(0, 6).map((album, index) => (
+            {this.props.albums.map((album, index) => (
               <Col xs={6} md={4} className="my-2" key={index}>
                 <SingleGallery album={album} />
               </Col>

@@ -1,4 +1,11 @@
-#footer {
+#footerIcon,
+#footerProgressBar {
   display: flex;
   justify-content: center;
+  color: #b3b3b3;
+  margin: 10px;
+}
+
+svg {
+  margin: 5px;
 }

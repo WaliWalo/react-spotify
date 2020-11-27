@@ -7,9 +7,15 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Artist from "./components/Artist";
 import Album from "./components/Album";
+import Search from "./components/Search";
+
 import { Col, Row } from "react-bootstrap";
 
 class App extends React.Component {
+  state = { query: "" };
+  handler = (query) => {
+    this.setState({ query: query });
+  };
   render() {
     return (
       <div className="App">
@@ -17,7 +23,7 @@ class App extends React.Component {
           <>
             <Row>
               <Col xs={2} style={{ position: "absolute" }}>
-                <NavBar />
+                <NavBar handler={this.handler} />
               </Col>
               <Col
                 xs={10}
@@ -48,6 +54,19 @@ class App extends React.Component {
                     props // props are history, location, match
                   ) => <Album title="Album" {...props} />} // in this way you can pass your own props along with the router ones
                 />
+                <Route
+                  path="/search"
+                  exact
+                  render={(
+                    props // props are history, location, match
+                  ) => (
+                    <Search
+                      title="Search"
+                      query={this.state.query}
+                      {...props}
+                    />
+                  )} // in this way you can pass your own props along with the router ones
+                />
               </Col>
             </Row>
             <div
@@ -61,14 +80,12 @@ class App extends React.Component {
             <Row
               className="mx-auto"
               style={{
-                padding: "20px",
                 position: "fixed",
                 left: "0",
                 bottom: "0",
-                height: "60px",
+                height: "70px",
                 width: "100%",
-                backgroundColor: "#F8F8F8",
-                borderTop: "1px solid #E7E7E7",
+                backgroundColor: "#282828",
               }}
             >
               <Footer />

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { Nav, Spinner } from "react-bootstrap";
 import HomeTrending from "./HomeTrending";
+import HomePodcast from "./HomePodcast";
+import HomeNew from "./HomeNew";
 import { fetchAlbumsByArray } from "../api/deezerApi";
 import "./css/home.css";
+import { Link, Route } from "react-router-dom";
 
 const searchQuery = ["queen", "avicii"];
 
@@ -32,10 +35,14 @@ export default class Home extends Component {
               {/* <Link to="/home/podcasts" className="nav-link">
                 Podcasts
               </Link> */}
-              <Nav.Link eventKey="link-1">Podcasts</Nav.Link>
+              <Nav.Link as={Link} to="/home/podcasts" eventKey="link-1">
+                Podcasts
+              </Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link eventKey="link-2">New Releases</Nav.Link>
+              <Nav.Link as={Link} to="/home/newRelease" eventKey="link-2">
+                New Releases
+              </Nav.Link>
             </Nav.Item>
           </Nav>
         </div>
@@ -47,7 +54,7 @@ export default class Home extends Component {
           </Spinner>
         )}
 
-        {/* <Route
+        <Route
           path="/home/podcasts"
           exact
           render={(props) => <HomePodcast title="Podcasts" />}
@@ -56,7 +63,7 @@ export default class Home extends Component {
           path="/home/newRelease"
           exact
           render={(props) => <HomeNew title="New Releases" />}
-        /> */}
+        />
       </>
     );
   }

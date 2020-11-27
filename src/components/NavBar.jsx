@@ -3,6 +3,20 @@ import { Form, FormControl, Nav, Navbar } from "react-bootstrap";
 import { Link, withRouter } from "react-router-dom";
 import "./css/navBar.css";
 class NavBar extends Component {
+  state = {
+    query: "",
+  };
+
+  handleSearch = (e) => {
+    if (e.keyCode === 13 || e.key === "Enter") {
+      e.preventDefault();
+      this.props.handler(this.state.query);
+      this.props.history.push("/search");
+    } else {
+      this.setState({ query: e.currentTarget.value });
+    }
+  };
+
   render() {
     return (
       <>
@@ -22,7 +36,14 @@ class NavBar extends Component {
             </Link> */}
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" id="searchBar" />
+            <FormControl
+              type="text"
+              placeholder="Search"
+              id="searchBar"
+              onKeyDown={this.handleSearch}
+              onChange={this.handleSearch}
+              value={this.state.query}
+            />
           </Form>
         </Navbar>
       </>
